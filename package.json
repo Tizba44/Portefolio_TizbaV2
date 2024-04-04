@@ -1,0 +1,22 @@
+{
+  "name": "portefolio-tizba",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "dat.gui": "^0.7.9",
+    "three": "^0.155.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.9",
+    "vite-plugin-string": "^1.2.1"
+  }
+}

@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'tenby-five.otf';
+  src: url('/src/assets/font/tenby-five.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'font2.ttf';
+  src: url('/src/assets/font/font2.ttf');
+  font-weight: normal;
+  font-style: normal;
+
+
+}
+
+
+
+/* toute les écriture ont la police tenby-five.otf */
+p,
+a {
+  font-family: 'tenby-five.otf';
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* toute les titre ont la police t  */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'font2.ttf';
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #141414;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+:root {
+  /* utiliser */
+  --o2: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /*  */
+}
