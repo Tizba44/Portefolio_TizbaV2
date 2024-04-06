@@ -1,73 +1,52 @@
 <template>
-    <div v-if="loadMounted">
-        <div class="counter-label">{{ Math.floor(progress) }}</div>
-        <canvas class="canvas3"></canvas>
-        <div class="date">
-            <span class="datespan"></span>
-            <span class="datespan">2</span>
-            <span class="datespan">0</span>
-            <span class="datespan">0</span>
-            <span class="datespan">1</span>
+
+    <nav id="nav">
+        <div v-for="(link, index) in links" :key="index" :class="{ 'nav-link': true, 'active': isActive(link.url) }">
+            <div class="gravityButton">
+                <a @click="navigate(link.url)" class="buttonIcon">{{ link.name }}</a>
+            </div>
         </div>
-        <div class="nom">
-            <span class="nomspan">T</span>
-            <span class="nomspan">i</span>
-            <span class="nomspan">z</span>
-            <span class="nomspan">b</span>
-            <span class="nomspan">a</span>
-            <span class="nomspan"></span>
-            <span class="nomspan"></span>
-            <span class="nomspan"></span>
+    </nav>
+    <div class="gravityButton">
+        <div class="buttonIcon">
+
+            <svg width="61" height="56" viewBox="0 0 61 56" fill="none" alt="logo" class="logobi" @click="reloadPage">
+                <path fill-rule="evenodd" clip-rule="evenodd" class="logo"
+                    d="M32.9998 6.50004C34.9067 11.3361 35.7249 13.9779 36.4998 18.5C44.3541 21.5881 49.0233 24.4579 53.5 29.5C54.2003 31.2663 54.5283 32.4196 54 36.5C52.9174 39.9698 50.474 41.0773 46.9998 43.5L34.4998 44.5C29.9529 43.7768 27.3582 43.225 22.4998 41.5C17.1749 39.6406 15.8274 37.8219 10.5 34.0002C7.11077 32.7348 8.39119 33.4021 8 36C12.5669 40.735 14.4134 40.824 20.4998 43.5C25.5377 45.7378 28.5166 46.6799 34.4998 47C36.7591 47.1446 43.4596 44.6896 43.9998 46C44.54 47.3105 31.202 58.4121 27.4998 57.5C23.7976 56.588 15.8613 53.8927 13.4998 52.5C11.1383 51.1073 7.55109 49.5719 3.4998 44.5C0.589438 39.1179 -0.672616 36.9842 1.49999 30.0002C1.88798 25.5105 2.7064 23.1125 4.99999 19.0002C6.13955 11.1113 7.3535 6.01901 13.4998 2.00004C17.8729 -0.405661 22.4998 4.50003 22.4998 4.50003C26.7834 -0.897591 29.1108 -0.579235 32.9998 6.50004ZM13.4197 18.1558C13.4197 15.9613 13.4529 9.92765 13.4529 9.92765C13.4529 8.66853 13.7902 7.43693 14.4554 6.54659C15.1207 5.65626 16.6956 5.15607 17.6364 5.15607C18.5772 5.15607 19.4795 5.65626 20.1448 6.54659C20.81 7.43693 21.2451 8.64789 21.2451 9.90701V18.1561L13.4197 18.1558ZM31.8271 9.28397V16.1561L26.135 16.1557L26.1349 9.20708C26.1349 7.9384 26.4919 6.79857 27.1554 5.90148C27.8189 5.00439 28.2203 4.50003 29.1586 4.50003C29.8744 4.50003 30.0619 4.79362 30.4053 5.33123C30.5119 5.49826 30.6336 5.68884 30.7909 5.90148C31.4544 6.79857 31.8271 8.01529 31.8271 9.28397Z"
+                    fill="rgb(139, 139, 139)" />
+            </svg>
         </div>
     </div>
+    <frog v-if="showFrog" class="frog" />
 
 
-    <div :class="composantClass">
-        <nav id="nav">
-            <div v-for="(link, index) in links" :key="index" :class="{ 'nav-link': true, 'active': isActive(link.url) }">
-                <div class="gravityButton">
-                    <a @click="navigate(link.url)" class="buttonIcon">{{ link.name }}</a>
-                </div>
-            </div>
-        </nav>
-        <div class="gravityButton">
-            <div class="buttonIcon">
+    <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+        <canvas class="canvas"></canvas>
+    </div>
 
-                <svg width="61" height="56" viewBox="0 0 61 56" fill="none" alt="logo" class="logobi" @click="reloadPage">
-                    <path fill-rule="evenodd" clip-rule="evenodd" class="logo"
-                        d="M32.9998 6.50004C34.9067 11.3361 35.7249 13.9779 36.4998 18.5C44.3541 21.5881 49.0233 24.4579 53.5 29.5C54.2003 31.2663 54.5283 32.4196 54 36.5C52.9174 39.9698 50.474 41.0773 46.9998 43.5L34.4998 44.5C29.9529 43.7768 27.3582 43.225 22.4998 41.5C17.1749 39.6406 15.8274 37.8219 10.5 34.0002C7.11077 32.7348 8.39119 33.4021 8 36C12.5669 40.735 14.4134 40.824 20.4998 43.5C25.5377 45.7378 28.5166 46.6799 34.4998 47C36.7591 47.1446 43.4596 44.6896 43.9998 46C44.54 47.3105 31.202 58.4121 27.4998 57.5C23.7976 56.588 15.8613 53.8927 13.4998 52.5C11.1383 51.1073 7.55109 49.5719 3.4998 44.5C0.589438 39.1179 -0.672616 36.9842 1.49999 30.0002C1.88798 25.5105 2.7064 23.1125 4.99999 19.0002C6.13955 11.1113 7.3535 6.01901 13.4998 2.00004C17.8729 -0.405661 22.4998 4.50003 22.4998 4.50003C26.7834 -0.897591 29.1108 -0.579235 32.9998 6.50004ZM13.4197 18.1558C13.4197 15.9613 13.4529 9.92765 13.4529 9.92765C13.4529 8.66853 13.7902 7.43693 14.4554 6.54659C15.1207 5.65626 16.6956 5.15607 17.6364 5.15607C18.5772 5.15607 19.4795 5.65626 20.1448 6.54659C20.81 7.43693 21.2451 8.64789 21.2451 9.90701V18.1561L13.4197 18.1558ZM31.8271 9.28397V16.1561L26.135 16.1557L26.1349 9.20708C26.1349 7.9384 26.4919 6.79857 27.1554 5.90148C27.8189 5.00439 28.2203 4.50003 29.1586 4.50003C29.8744 4.50003 30.0619 4.79362 30.4053 5.33123C30.5119 5.49826 30.6336 5.68884 30.7909 5.90148C31.4544 6.79857 31.8271 8.01529 31.8271 9.28397Z"
-                        fill="rgb(139, 139, 139)" />
-                </svg>
-            </div>
-        </div>
-        <frog v-if="showFrog" class="frog" />
+    <table>
+        <tr v-for="(carte, index) in cartes" :key="index">
+            <td>
+                <component :is="carte.component" v-if="carte.show" />
+            </td>
+        </tr>
+    </table>
 
+    <!-- Ajout des flèches de navigation -->
+    <p class="fleche1" v-if="showcarteX && prevCarteAvailable" @click="prevCarte">&#x279C</p>
+    <p class="fleche2" v-if="showcarteX && nextCarteAvailable" @click="nextCarte">&#x279C</p>
+    <p id="croix" @click="hideCarte" v-if="showcarteX">&#10006</p>
 
-        <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-            <canvas class="canvas"></canvas>
-        </div>
+    <div class="gravityButton" id="gauche">
+        <a href="https://www.linkedin.com/in/baptiste-audeon-04b070287/" class="buttonIcon">Linkedin</a>
+    </div>
 
-        <table>
-            <tr v-for="(carte, index) in cartes" :key="index">
-                <td>
-                    <component :is="carte.component" v-if="carte.show" />
-                </td>
-            </tr>
-        </table>
-
-        <!-- Ajout des flèches de navigation -->
-        <p class="fleche1" v-if="showcarteX && prevCarteAvailable" @click="prevCarte">&#x279C</p>
-        <p class="fleche2" v-if="showcarteX && nextCarteAvailable" @click="nextCarte">&#x279C</p>
-        <p id="croix" @click="hideCarte" v-if="showcarteX">&#10006</p>
-
-        <div class="gravityButton" id="gauche">
-            <a href="https://www.linkedin.com/in/baptiste-audeon-04b070287/" class="buttonIcon">Linkedin</a>
-        </div>
-
-        <div class="gravityButton" id="droite">
-            <a href="mailto:bapt.audeon@gmail.com" class="buttonIcon">Contact</a>
-        </div>
-
+    <div class="gravityButton" id="droite">
+        <a href="mailto:bapt.audeon@gmail.com" class="buttonIcon">Contact</a>
+    </div>
+    <div>
+        <div>{{ props.model }}</div>
+        <div>{{ props.textureData }}</div>
     </div>
 </template>
 
@@ -78,17 +57,12 @@
 // ===================================================================================
 // IMPORT ===================================================================================
 // ===================================================================================
-import { onMounted, ref, defineAsyncComponent, computed, onBeforeUnmount, onUnmounted } from 'vue';
+import { onMounted, ref, computed, onUnmounted, defineProps, unref } from 'vue';
 
 import * as THREE from 'three';
 
 import anime from 'animejs/lib/anime.es.js';
 
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 
@@ -96,12 +70,7 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 
-import pointVertex from '/src/assets/shaders/pointVertex.glsl';
-
-import pointFragment from '/src/assets/shaders/pointFragment.glsl';
-
 import { useRoute, useRouter } from 'vue-router';
-
 
 import project1 from '/src/assets/img/projet1.png';
 import project2 from '/src/assets/img/projet2.png';
@@ -112,28 +81,9 @@ import Carte1 from '../components/carte1.vue';
 import Carte2 from '../components/carte2.vue';
 import Carte3 from '../components/carte3.vue';
 
-// const frog = defineAsyncComponent(() =>
-//     import('../components/Frog.vue')
-// )
-// const Carte1 = defineAsyncComponent(() =>
-//     import('../components/carte1.vue')
-// )
-// const Carte2 = defineAsyncComponent(() =>
-//     import('../components/carte2.vue')
-// )
-// const Carte3 = defineAsyncComponent(() =>
-//     import('../components/carte3.vue')
-// )
-
 // ===================================================================================
 // Carte ==================================================================================
 // ===================================================================================
-
-
-
-
-
-
 
 const showcarteX = ref(false)
 
@@ -236,18 +186,12 @@ function navigate(url) {
         hideCarte();
         about().then(() => {
             //arrête le chargement des données dans le dom 
-
             router.push(url)
-
-
         })
     }
 }
 
 
-// ===================================================================================
-// loading ==================================================================================
-// ===================================================================================
 
 const showFrog = ref(false)
 
@@ -268,234 +212,23 @@ const reloadPage = () => {
 const logostart = "M32.9998 6.50004C34.9067 11.3361 35.7249 13.9779 36.4998 18.5C44.3541 21.5881 49.0233 24.4579 53.5 29.5C54.2003 31.2663 54.5283 32.4196 54 36.5C52.9174 39.9698 50.474 41.0773 46.9998 43.5L34.4998 44.5C29.9529 43.7768 27.3582 43.225 22.4998 41.5C17.1749 39.6406 15.8274 37.8219 10.5 34.0002C7.11077 32.7348 8.39119 33.4021 8 36C12.5669 40.735 14.4134 40.824 20.4998 43.5C25.5377 45.7378 28.5166 46.6799 34.4998 47C36.7591 47.1446 43.4596 44.6896 43.9998 46C44.54 47.3105 31.202 58.4121 27.4998 57.5C23.7976 56.588 15.8613 53.8927 13.4998 52.5C11.1383 51.1073 7.55109 49.5719 3.4998 44.5C0.589438 39.1179 -0.672616 36.9842 1.49999 30.0002C1.88798 25.5105 2.7064 23.1125 4.99999 19.0002C6.13955 11.1113 7.3535 6.01901 13.4998 2.00004C17.8729 -0.405661 22.4998 4.50003 22.4998 4.50003C26.7834 -0.897591 29.1108 -0.579235 32.9998 6.50004ZM13.4197 18.1558C13.4197 15.9613 13.4529 9.92765 13.4529 9.92765C13.4529 8.66853 13.7902 7.43693 14.4554 6.54659C15.1207 5.65626 16.6956 5.15607 17.6364 5.15607C18.5772 5.15607 19.4795 5.65626 20.1448 6.54659C20.81 7.43693 21.2451 8.64789 21.2451 9.90701V18.1561L13.4197 18.1558ZM31.8271 9.28397V16.1561L26.135 16.1557L26.1349 9.20708C26.1349 7.9384 26.4919 6.79857 27.1554 5.90148C27.8189 5.00439 28.2203 4.50003 29.1586 4.50003C29.8744 4.50003 30.0619 4.79362 30.4053 5.33123C30.5119 5.49826 30.6336 5.68884 30.7909 5.90148C31.4544 6.79857 31.8271 8.01529 31.8271 9.28397Z";
 const logoend = "M56.2405 16.2727V21.9706L60.2328 21.9708V27.7302C60.2282 30.8996 57.9157 33.4676 55.0628 33.4708H44.2814H38.8907H33.5H24.8664H16.2328C14.9146 33.4708 13.6601 34.0332 12.728 34.9865C11.7959 35.9398 11.2722 37.2328 11.2722 38.5759C11.2722 39.9291 11.7959 41.222 12.728 42.1753C13.6601 43.1286 14.9243 43.6642 16.2424 43.6642H32L42.5 43.6675L53 43.6708H60.2328V49.4302C60.2282 52.5996 57.9157 55.1677 55.0628 55.1708H45.3553H35.6478H25.9403H16.2328C11.925 55.1708 7.75334 53.4426 4.7573 50.3273C1.71125 47.212 3.25227e-07 42.9867 0 38.5759C0 36.224 0.489763 33.9186 1.41165 31.7573L1.42596 16.4452L1.42599 16.4143C1.43394 12.1421 3.09048 8.04673 6.20083 5.02525C9.31867 1.99649 13.5474 0.294956 17.9567 0.294956C22.1009 0.294956 26.0837 1.57193 29.1362 4.24015C32.2018 1.28266 35.3264 -1.14441e-05 39.6597 -1.14441e-05C44.0572 -1.11183e-05 48.2746 1.71444 51.3841 4.76619C54.4936 7.81794 56.2405 11.9569 56.2405 16.2727ZM12.8741 21.9691C12.8741 19.6846 12.9216 16.4702 12.9216 16.4702C12.9216 15.1595 13.4053 13.8775 14.3594 12.9507C15.3134 12.0239 16.6074 11.5032 17.9567 11.5032C19.3059 11.5032 20.5999 12.0239 21.5539 12.9507C22.508 13.8775 23.1319 15.1381 23.1319 16.4488V21.9693L12.8741 21.9691ZM44.7334 16.2728L44.7355 21.9702L34.6107 21.9698L34.6085 16.1928C34.6085 14.8721 35.1205 13.6856 36.072 12.7518C37.0236 11.818 38.3141 11.2933 39.6597 11.2933C41.0053 11.2933 42.2959 11.818 43.2474 12.7518C44.1989 13.6856 44.7334 14.9522 44.7334 16.2728Z";
 
-
-const progress = ref(0);
-const loadMounted = ref(true);
-
-let updateInterval;
-let currentProgress = 0;
-let targetProgress = 0;
-let luminositer;
-let animateCamera;
-
-const loadingManager = new THREE.LoadingManager();
-const gltfLoader = new GLTFLoader(loadingManager);
-const rgbeLoader = new RGBELoader(loadingManager);
-
-let isLoaded = false; // Ajoutez cette ligne en haut de votre script
-
-loadingManager.onProgress = function (url, loaded, total) {
-    if (!isLoaded) {
-        targetProgress = (loaded / total) * 100;
-        if (!updateInterval) {
-            updateInterval = setInterval(() => {
-                currentProgress += (targetProgress - currentProgress) * 0.05; // 0.05 est la vitesse de l'interpolation
-                progress.value = currentProgress;
-                luminositer = (currentProgress / 100) * 1.4;
-                if (currentProgress >= 99.5) {
-                    loadMounted.value = false;
-
-                    animateCamera(0);
-
-                    clearInterval(updateInterval);
-                    isLoaded = true; // Ajoutez cette ligne pour marquer que le chargement est terminé
-                }
-            }, 50);
-        }
-    }
-};
-
-
-const dLoader = new DRACOLoader();
-dLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-dLoader.setDecoderConfig({ type: 'js' });
-gltfLoader.setDRACOLoader(dLoader);
-
-const composantClass = computed(() => ({
-    composant: true,
-    'composant-visible': !loadMounted.value
-}));
+const props = defineProps({
+    data: Object
+});
 
 
 onMounted(() => {
-    // ===================================================================================
-    // scene load ==================================================================================
-    // ===================================================================================
 
-    // // remmetre nom et date leur propriéter de base
-    document.querySelector('.nom').style.bottom = '10vh';
-    document.querySelector('.date').style.bottom = '70vh';
+    //COMPOSANT enfant:
+    let model = unref(props.data.model);
+    let texture = unref(props.data.textureData);
 
-    setTimeout(function () {
-        let randomChar = () => String.fromCharCode(65 + Math.random() * 25); // Fonction pour générer un caractère aléatoire
+    let scene = new THREE.Scene();
+    let scene2 = new THREE.Scene();
 
-        let animateText = (text, targetClass, spanClass) => {
-            let textArray = text.split(''); // Convertir le texte en tableau
-
-            // Créer des spans pour chaque lettre
-            textArray.forEach((char, i) => {
-                let span = document.querySelector(spanClass + ':nth-child(' + (i + 1) + ')');
-                span.innerText = char;
-
-                // Animer la lettre
-                anime({
-                    targets: targetClass,
-                    duration: 1500,
-                    delay: i * 100, // Délai pour chaque lettre
-                    easing: 'easeInOutCubic',
-                    update: function () {
-                        span.innerText = randomChar(); // Mettre à jour la lettre avec un caractère aléatoire
-                    },
-                    complete: function () {
-                        span.innerText = char; // Rétablir la lettre correcte à la fin de l'animation
-                    }
-                });
-            });
-        }
-
-        animateText('baptiste', '.nomspan', '.nomspan');
-        animateText('.2023', '.datespan', '.datespan');
-
-        anime({
-            targets: '.nom',
-            bottom: '80vh',
-            easing: 'easeInOutQuad', // Vous pouvez changer l'effet d'animation ici
-            duration: 1500, // Durée de l'animation en millisecondes
-        });
-
-        anime({
-            targets: '.date',
-            bottom: '10vh',
-            easing: 'easeInOutQuad', // Vous pouvez changer l'effet d'animation ici
-            duration: 1500, // Durée de l'animation en millisecondes
-        });
-
-
-
-
-    }, 700);
-
-
-    const size = {
-        width: window.innerWidth,
-        height: window.innerHeight
-    };
-    const params = {
-        bloomEnabled: true,
-        bloomThreshold: 0.1,
-        bloomRadius: 0.1
-    };
-
-    const scene3 = new THREE.Scene();
-
-    let camera3 = new THREE.PerspectiveCamera(
-        27,
-        size.width / size.height,
-        1,
-        100
-    );
-
-    camera3.position.z = 40;
-
-    scene3.background = new THREE.Color(0x141414);
-    const canvas3 = document.querySelector(".canvas3");
-    const renderer3 = new THREE.WebGLRenderer({ canvas: canvas3, antialias: true });
-    renderer3.setSize(size.width, size.height);
-    renderer3.render(scene3, camera3);
-
-
-    const renderscene3 = new RenderPass(scene3, camera3);
-    const bloomPass = new UnrealBloomPass(
-        new THREE.Vector2(window.innerWidth, window.innerHeight),
-        luminositer,
-        params.bloomRadius,
-        params.bloomThreshold
-    );
-    const composer = new EffectComposer(renderer3);
-    composer.addPass(renderscene3);
-    composer.addPass(bloomPass);
-
-    window.addEventListener('resize', () => {
-        // Mettre à jour les dimensions de la fenêtre
-        size.width = window.innerWidth;
-        size.height = window.innerHeight;
-
-        // Mettre à jour l'aspect de la caméra
-        camera3.aspect = size.width / size.height;
-        camera3.updateProjectionMatrix();
-
-        // Mettre à jour la taille du rendu
-        renderer3.setSize(size.width, size.height);
-
-    });
-
-
-
-    function addCenterAttribute(geometry) {
-        const vectors = [
-            new THREE.Vector3(1, 0, 0),
-            new THREE.Vector3(0, 1, 0),
-            new THREE.Vector3(0, 0, 1)
-        ];
-        const position = geometry.attributes.position;
-        const centers = new Float32Array(position.count * 3);
-        for (let i = 0, l = position.count; i < l; i++) {
-            vectors[i % 3].toArray(centers, i * 3);
-        }
-        geometry.setAttribute("center", new THREE.BufferAttribute(centers, 3));
-    }
-
-    const geometry = new THREE.IcosahedronGeometry(6, 6);
-    addCenterAttribute(geometry);
-
-    let pointsSize;
-
-    const atomMaterial = new THREE.ShaderMaterial({
-        uniforms: {
-            color: { value: new THREE.Color(0x961a98) },
-            size: { value: pointsSize }
-        },
-        vertexShader: `
-        uniform float size;
-        void main() {
-            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-            gl_PointSize = size * (300.0 / -mvPosition.z);
-            gl_Position = projectionMatrix * mvPosition;
-        }
-    `,
-        fragmentShader: `
-        uniform vec3 color;
-        void main() {
-            float r = 0.0, delta = 0.0, alpha = 1.0;
-            vec2 cxy = 2.0 * gl_PointCoord - 1.0;
-            r = dot(cxy, cxy);
-            if (r > 1.0) {
-                discard;
-            }
-            gl_FragColor = vec4(color, alpha);
-        }
-    `,
-        depthTest: true,
-        depthWrite: true
-    });
-
-    const spherePoint = new THREE.Points(geometry, atomMaterial);
-    scene3.add(spherePoint);
-
-    const sphereLine = new THREE.Mesh(
-        geometry,
-        new THREE.ShaderMaterial({
-            vertexShader: pointVertex,
-            fragmentShader: pointFragment,
-            side: THREE.DoubleSide,
-            transparent: true
-        })
-    );
-
-    scene3.add(sphereLine);
-
-
-
+    console.log(texture)
+    scene.environment = texture;
+    scene2.environment = texture;
     // ===================================================================================
     // scene UFO ==================================================================================
     // ===================================================================================
@@ -511,8 +244,7 @@ onMounted(() => {
     const zoom = 50 * planete.length;
     const decalage = -2 * planete.length;
 
-    const scene = new THREE.Scene();
-    const scene2 = new THREE.Scene();
+
 
     let camera = new THREE.PerspectiveCamera(
         75,
@@ -524,6 +256,7 @@ onMounted(() => {
 
 
     const canvas = document.querySelector(".canvas");
+
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 
 
@@ -557,81 +290,60 @@ onMounted(() => {
     const textureLoader = new THREE.TextureLoader();
 
 
-    async function createSpheresAndAtmospheres() {
+    for (let i = 0; i < planete.length; i++) {
+        const planet = planete[i];
 
-        for (let i = 0; i < planete.length; i++) {
-            const planet = planete[i];
+        const sphere = new THREE.Mesh(
+            new THREE.SphereGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
+                transparent: true,
+                opacity: 0,
+            })
+        );
 
-            const sphere = new THREE.Mesh(
-                new THREE.SphereGeometry(1, 1, 1),
-                new THREE.MeshBasicMaterial({
-                    transparent: true,
-                    opacity: 0,
-                })
-            );
+        sphere.position.x = -(planete.length - 1) * 11 / 2 + i * 6 - decalage;
+        scene.add(sphere);
+        sphere.name = 'sphere' + i;
+        sphere.position.y = -3;
+        sphere.rotation.x = (Math.PI / 180) * -20;
+        spheres.push(sphere);
 
-            sphere.position.x = -(planete.length - 1) * 11 / 2 + i * 6 - decalage;
-            scene.add(sphere);
-            sphere.name = 'sphere' + i;
-            sphere.position.y = -3;
-            sphere.rotation.x = (Math.PI / 180) * -20;
-            spheres.push(sphere);
-
-            const texture = textureLoader.load(planet.minia);
+        const texture = textureLoader.load(planet.minia);
 
 
-            const rectangle = new THREE.Mesh(
-                new THREE.PlaneGeometry(5, 5, 10, 10),
-                new THREE.MeshPhongMaterial({
-                    transparent: true,
-                    map: texture,
-                    side: THREE.DoubleSide,
-                    opacity: 0,
-                    // Définissez la couleur émissive du matériau
-                    emissive: 0xff0000
-                })
-            );
+        const rectangle = new THREE.Mesh(
+            new THREE.PlaneGeometry(5, 5, 10, 10),
+            new THREE.MeshPhongMaterial({
+                transparent: true,
+                map: texture,
+                side: THREE.DoubleSide,
+                opacity: 0,
+                // Définissez la couleur émissive du matériau
+                emissive: 0xff0000
+            })
+        );
 
-            scene2.add(rectangle);
+        scene2.add(rectangle);
 
 
-            rectangle.position.x = -(planete.length - 1) * 11 / 2 + i * 6 - decalage;
+        rectangle.position.x = -(planete.length - 1) * 11 / 2 + i * 6 - decalage;
 
-            rectangle.position.z = 0.6;
+        rectangle.position.z = 0.6;
 
-            rectangles.push(rectangle);
+        rectangles.push(rectangle);
 
-            sphere.add(model.clone());
-        }
+        sphere.add(model.clone());
     }
 
-    let model;
 
-    let isModelLoaded = false; // Ajoutez cette ligne en haut de votre script
-    let isTextureLoaded = false; // Ajoutez cette ligne en haut de votre script
 
-    if (!isModelLoaded) {
-        let loadModel = new Promise((resolve, reject) => {
-            gltfLoader.load('/vaisseaux/untitled.gltf', function (gltf) {
-                model = gltf.scene;
-                isModelLoaded = true; // Ajoutez cette ligne pour marquer que le modèle est chargé
-                resolve();
-            }, undefined, function (error) {
-                reject(error);
-            });
-        });
 
-        loadModel.then(createSpheresAndAtmospheres).catch(console.error);
-    }
 
-    if (!isTextureLoaded) {
-        rgbeLoader.load('/vaisseaux/MR_INT-005_WhiteNeons_NAD.hdr', function (texture) {
-            texture.mapping = THREE.EquirectangularReflectionMapping;
-            scene.environment = texture;
-            scene2.environment = texture;
-            isTextureLoaded = true; // Ajoutez cette ligne pour marquer que la texture est chargée
-        });
-    }
+
+
+
+
+
 
 
 
@@ -676,46 +388,27 @@ onMounted(() => {
 
 
     function animate() {
-        if (isLoaded === false) {
-            composer.render();
+        composer1.render();
 
-            bloomPass.strength = luminositer;
-            pointsSize = luminositer * 0.9;
-            atomMaterial.uniforms.size.value = pointsSize;
+        renderer.autoClear = false; // Empêche l'effacement automatique du buffer.
 
-            if (targetProgress > 0) {
-                sphereLine.rotation.y += 0.003;
-                spherePoint.rotation.y += 0.003;
+        renderer.clearDepth(); // Clear the depth buffer
 
-            }
-        }
-
-        if (isLoaded === true) {
+        // Effectue le rendu de la deuxième scène par-dessus la première
+        renderer.render(scene, camera);
 
 
-            composer1.render();
+        spheres.forEach((sphere, index) => {
+            let angle = (window.nextPercentage / 100) * 2 * Math.PI;
 
-            renderer.autoClear = false; // Empêche l'effacement automatique du buffer.
-
-            renderer.clearDepth(); // Clear the depth buffer
-
-            // Effectue le rendu de la deuxième scène par-dessus la première
-            renderer.render(scene, camera);
-
-
-            spheres.forEach((sphere, index) => {
-                let angle = (window.nextPercentage / 100) * 2 * Math.PI;
-
-                anime({
-                    targets: sphere.rotation,
-                    y: angle,
-                    duration: 1200,
-                    easing: 'cubicBezier(0.33, 1, 0.68, 1)'
-                });
-
+            anime({
+                targets: sphere.rotation,
+                y: angle,
+                duration: 1200,
+                easing: 'cubicBezier(0.33, 1, 0.68, 1)'
             });
 
-        }
+        });
 
         window.requestAnimationFrame(animate);
     }
@@ -735,6 +428,12 @@ onMounted(() => {
     camera.position.set(cameraPositions[0].x, cameraPositions[0].y, cameraPositions[0].z);
 
     let durs = [1800, 1300];
+    let animateCamera;
+
+
+
+
+
     animateCamera = function (index) {
         let nextIndex = index + 1;
         if (nextIndex < cameraPositions.length) {
@@ -847,9 +546,12 @@ onMounted(() => {
             });
 
         }
+    };
 
-    }
 
+
+
+    animateCamera(0);
 
     about = function () {
 
@@ -1003,13 +705,9 @@ onMounted(() => {
     }
     // Listen for the "keydown" event
 
-
 });
 
 
-onBeforeUnmount(() => {
-
-});
 
 onUnmounted(() => {
     window.onmousedown = null;
@@ -1105,7 +803,7 @@ onUnmounted(() => {
 
 
 
-</script> 
+</script>
 
 
 
@@ -1159,49 +857,7 @@ onUnmounted(() => {
     cursor: grab;
 }
 
-.composant {
-    display: none;
-}
 
-.composant-visible {
-    display: block;
-}
-
-.counter-label {
-    color: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 10vw;
-    transform: translate(50%, -50%);
-    font-family: 'font2.ttf';
-    /* font size min 3em sinon 6vw */
-    font-size: 5em;
-
-    text-transform: uppercase;
-}
-
-.date {
-    color: #ffffff;
-    position: absolute;
-    bottom: 70vh;
-    right: 0vw;
-    text-transform: uppercase;
-    font-family: 'font2.ttf';
-    font-size: 4vw;
-    transform: translate(-50%, 0%);
-}
-
-.nom {
-    color: #ffffff;
-    position: absolute !important;
-    bottom: 10vh;
-    right: 5vw;
-    text-transform: uppercase;
-    font-family: 'font2.ttf';
-    font-size: 4vw;
-    transform: translate(-50%, 0%);
-
-}
 
 #nav {
     position: fixed;

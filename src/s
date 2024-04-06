@@ -1,0 +1,77 @@
+la value est différente quand je la transfert vuejs 3 script setup
+
+composant parent 
+    
+<router-view :model="model" :scene="scene" :scene2="scene2" />
+
+scene.value = new THREE.Scene();
+scene2.value = new THREE.Scene();
+
+const model = ref(null);
+const scene = ref(null);
+const scene2 = ref(null);
+
+
+  rgbeLoader.load('/vaisseaux/MR_INT-005_WhiteNeons_NAD.hdr', function (texture) {
+    texture.mapping = THREE.EquirectangularReflectionMapping;
+    scene.value.environment = texture;
+    scene2.value.environment = texture;
+  });
+
+
+  gltfLoader.load('/vaisseaux/untitled.gltf', function (gltf) {
+    model.value = gltf.scene;
+    console.log(model);
+  });
+
+console:
+RefImpl {__v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: Group, _value: Proxy(Group)}
+dep
+: 
+Set(1) {ReactiveEffect}
+__v_isRef
+: 
+true
+__v_isShallow
+: 
+false
+_rawValue
+: 
+Group {isObject3D: true, uuid: '05cceaed-6d11-44a7-b256-9c3340960eb4', name: 'Scene', type: 'Group', parent: null, …}
+_value
+: 
+Proxy(Group) {isObject3D: true, uuid: '05cceaed-6d11-44a7-b256-9c3340960eb4', name: 'Scene', type: 'Group', parent: null, …}
+value
+: 
+(…)
+[[Prototype]]
+: 
+Object
+
+
+
+composant enfant 
+    
+<div>
+    <div>{{ props.model }}</div>
+    <div>{{ props.scene }}</div>
+    <div>{{ props.scene2 }}</div>
+</div>
+
+let model = props.model;
+let scene = props.scene;
+let scene2 = props.scene2;
+
+console.log(model);
+
+
+console : Proxy(Group) {isObject3D: true, uuid: '05cceaed-6d11-44a7-b256-9c3340960eb4', name: 'Scene', type: 'Group', parent: null, …}
+[[Handler]]
+: 
+MutableReactiveHandler
+[[Target]]
+: 
+Group
+[[IsRevoked]]
+: 
+false

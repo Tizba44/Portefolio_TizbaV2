@@ -4,8 +4,13 @@ import App from './App.vue'
 import './assets/main.css'
 
 // Utilisez la fonction import() pour charger les composants de manière paresseuse
-const Projects = () => import('./view/Projects.vue');
-const About = () => import('./view/About.vue');
+// const Projects = () => import('./view/Projects.vue');
+// const About = () => import('./view/About.vue');
+
+
+import Projects from './view/Projects.vue'
+import About from './view/About.vue'
+
 
 const routes = [
     { path: '/', component: Projects },
