@@ -57,7 +57,7 @@
 // ===================================================================================
 // IMPORT ===================================================================================
 // ===================================================================================
-import { onMounted, ref, computed, onUnmounted, defineProps, unref } from 'vue';
+import { onMounted, ref, computed, unref } from 'vue';
 
 import * as THREE from 'three';
 
@@ -75,6 +75,9 @@ import { useRoute, useRouter } from 'vue-router';
 import project1 from '/src/assets/img/projet1.png';
 import project2 from '/src/assets/img/projet2.png';
 import project3 from '/src/assets/img/projet3.png';
+import project4 from '/src/assets/img/projet4.png';
+import project5 from '/src/assets/img/projet5.png';
+import project6 from '/src/assets/img/projet6.png';
 
 import frog from '../components/Frog.vue';
 import Carte1 from '../components/carte1.vue';
@@ -226,7 +229,7 @@ onMounted(() => {
     let scene = new THREE.Scene();
     let scene2 = new THREE.Scene();
 
-    console.log(texture)
+
     scene.environment = texture;
     scene2.environment = texture;
     // ===================================================================================
@@ -234,6 +237,9 @@ onMounted(() => {
     // ===================================================================================
 
     const planete = [
+        { name: 'project6', minia: project6 },
+        { name: 'project5', minia: project5 },
+        { name: 'project4', minia: project4 },
         { name: 'project3', minia: project3 },
         { name: 'project2', minia: project2 },
         { name: 'project1', minia: project1 },
@@ -319,7 +325,7 @@ onMounted(() => {
                 side: THREE.DoubleSide,
                 opacity: 0,
                 // Définissez la couleur émissive du matériau
-                emissive: 0xff0000
+                emissive: 0xE300E7
             })
         );
 
@@ -334,17 +340,6 @@ onMounted(() => {
 
         sphere.add(model.clone());
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     window.nextPercentage = 0;
@@ -429,10 +424,6 @@ onMounted(() => {
 
     let durs = [1800, 1300];
     let animateCamera;
-
-
-
-
 
     animateCamera = function (index) {
         let nextIndex = index + 1;
@@ -706,102 +697,6 @@ onMounted(() => {
     // Listen for the "keydown" event
 
 });
-
-
-
-onUnmounted(() => {
-    window.onmousedown = null;
-    window.ontouchstart = null;
-    window.onmouseup = null;
-    window.ontouchend = null;
-    window.onmousemove = null;
-    window.ontouchmove = null;
-    window.removeEventListener("wheel", null);
-    document.removeEventListener("keydown", null);
-
-    window.removeEventListener("wheel", (event) => {
-        const direction = event.deltaY > 0 ? 5 : -5;
-        handleScroll(direction);
-    });
-
-    document.removeEventListener("keydown", function (event) {
-        let direction = 0;
-        switch (event.key) {
-            case "ArrowUp":
-                direction = -5;
-                break;
-            case "ArrowDown":
-                direction = 5;
-                break;
-            case "ArrowLeft":
-                direction = 5;
-                break;
-            case "ArrowRight":
-                direction = -5;
-                break;
-            default:
-                return;
-        }
-        handleScroll(direction);
-    });
-
-    window.removeEventListener("resize", () => {
-        size.width = window.innerWidth;
-        size.height = window.innerHeight;
-        camera.aspect = size.width / size.height;
-        camera.updateProjectionMatrix()
-        renderer.setSize(size.width, size.height);
-        camera.setFocalLength(zoom);
-    });
-
-
-    window.removeEventListener("resize", () => {
-        size.width = window.innerWidth;
-        size.height = window.innerHeight;
-        camera3.aspect = size.width / size.height;
-        camera3.updateProjectionMatrix()
-        renderer3.setSize(size.width, size.height);
-        camera3.setFocalLength(zoom);
-    });
-
-
-
-    document.querySelectorAll('.gravityButton').forEach(btn => {
-        btn.removeEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const h = rect.width / 2;
-
-            const x = e.clientX - rect.left - h;
-            const y = e.clientY - rect.top - h;
-
-            const r1 = Math.sqrt(x * x + y * y);
-            const r2 = (1 - (r1 / h)) * r1;
-
-            const angle = Math.atan2(y, x);
-            const tx = Math.round(Math.cos(angle) * r2 * 100) / 100;
-            const ty = Math.round(Math.sin(angle) * r2 * 100) / 100;
-
-            const op = (r2 / r1) + 0.25;
-
-            btn.style.setProperty('--tx', `${tx}px`);
-            btn.style.setProperty('--ty', `${ty}px`);
-
-        });
-
-        btn.removeEventListener('mouseleave', (e) => {
-            btn.style.setProperty('--tx', '0px');
-            btn.style.setProperty('--ty', '0px');
-        });
-
-
-
-    });
-
-
-});
-
-
-
 
 </script>
 
