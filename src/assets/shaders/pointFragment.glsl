@@ -14,5 +14,5 @@ void main() {
         discard;
     }
     }
-    gl_FragColor = vec4(2.55, 0.43, 2.30 , 0.2);
+    gl_FragColor = vec4(0.77, 0.90 ,1.0 , 0.2);
 }

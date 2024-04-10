@@ -14,31 +14,30 @@
 
 
             <div class="left">
-                <h2>The Portfolio You’re Viewing</h2>
-                <p>I coded and designed the portfolio using Vue.js, Anime.js and Three.js.I tooked space releated elements
-                    to which I added a Tron-like aesthetic.
-                </p>
-                <p>I had to delete
-                    three quarters of my code, but I’m quite pleased with the final result. I hope you will like it as much
-                    as I do.</p>
+                <h2>Le portfolio que vous consultez</h2>
+                <p>J'ai codé et conçu le portfolio en utilisant Vue.js, Anime.js et Three.js. J'ai pris des éléments
+                    liés à l'espace et à la science-fiction pour créer un univers unique.</p>
+
+                <p>Je m'y suis repris a plusieur fois ,j'ai dû supprimer
+                    les trois quarts de mon code, mais je suis assez satisfait du résultat final. J'espère que vous
+                    l'aimerez autant
+                    que moi.</p>
             </div>
 
             <div class="right">
-                <h3>Technologies:</h3>
-                <p> Figma, Vue.js, Anime.js, Three.js, Vite.js, photoshop, CSS.
+                <h3>Technologies :</h3>
+                <p> Figma, Vue.js, Anime.js, Three.js, Vite.js, Photoshop, CSS.
                 </p>
 
 
-                <h3>Completed:</h3>
+                <h3>Terminé :</h3>
                 <p>28/10/2023.</p>
 
 
-                <h3>Type:</h3>
-                <p>Portfolio</p>
+                <h3>Type :</h3>
+                <p>Portfolio.</p>
 
 
-                <h3>Client:</h3>
-                <p>Personal project.</p>
 
             </div>
 
@@ -49,13 +48,14 @@
     </main>
 </template>
 
- 
 <script>
 
 import { ref, computed } from 'vue';
 import anime from 'animejs';
 
-import projet1 from '/src/assets/img/projet3.png'
+
+import project3 from '/src/assets/img/projet3.png';
+
 
 
 
@@ -63,7 +63,7 @@ export default {
     data() {
         return {
             images: [
-                { src: projet1, alt: '', },
+                { src: project3, alt: '', },
             ],
             currentImage: 0,
             show: false,
@@ -161,7 +161,7 @@ export default {
 
 
 
-  
+
 <style scoped>
 @media (max-width: 900px) {
 
@@ -351,4 +351,3 @@ span:nth-of-type(8) {
     --x: 88.88%
 }
 </style>
- 

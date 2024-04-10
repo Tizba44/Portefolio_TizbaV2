@@ -14,37 +14,30 @@
 
 
             <div class="left">
-                <h2>Amalgames: un blog de mode</h2>
+                <h2>Automatiser la création d’agenda</h2>
                 <p>
-                    Mon ami a perdu son emploi en tant qu'éditeur pour l'un des plus grands blogs français.
-                    (verygoodlord.com)
-                </p>
-                <p>
-                    Je lui ai proposé de lui crée un theme wordpress pour qu'il puisse continuer à utiliser les
-                    compétences qu'il a acquises.
-                </p>
-                <p>J'ai coder le theme wordpress en php from scratch, cela m'a permis de comprendre comment fonctionne
-                    wordpress
-                </p>
-                <p class="stop">(Nous avons arrêté, j'ai migré le blog vers mon portfolio.)
+                    Lors de mon stage SUN radio j'ai réalisé un outil automatisant la génération d'agendas d'événements
+                    locaux sur
+                    leur site web. L'outil intègre les événements les plus pertinents, récupérés via des flux RSS/API.
+                    Ces
+                    événements sont ensuite traités et classifiés à l'aide de Mistral en local.
                 </p>
             </div>
 
             <div class="right">
+                <h3>Technologies:</h3>
+                <p>
+                    Directus, N8N, Mistral IA , chat GPT.
+                </p>
 
-                <h3>Technologies :</h3>
-                <p>WordPress, PHP, CSS, Vanilla JS, Yoast SEO, Figma.</p>
+                <h3>Completed:</h3>
+                <p>28/10/2023.</p>
 
-                <h3>Terminé :</h3>
-                <p>18/02/2023.</p>
+                <h3>Type:</h3>
+                <p>Stage.</p>
 
-                <h3>Type :</h3>
-                <p>Blog.</p>
-
-
-
-                <a class="see" href="https://amalgames.baptisteaudeon.com/" target="_blank">voir le site web</a>
-                <a href="" target="_blank">voir le code source</a>
+                <h3>Client :</h3>
+                <p>Projet personnel.</p>
 
             </div>
 
@@ -56,27 +49,21 @@
 </template>
 
 
-
 <script>
 
 import { ref, computed } from 'vue';
 import anime from 'animejs';
 
 
-import project1 from '/src/assets/img/projet1.png';
+import project6 from '/src/assets/img/projet6.png';
 
-import img1 from '/src/assets/img/img1.png'
-import img2 from '/src/assets/img/img2.png'
-import img3 from '/src/assets/img/img3.png'
+
 
 export default {
     data() {
         return {
             images: [
-                { src: project1, alt: '', },
-                { src: img1, alt: '', },
-                { src: img2, alt: '', },
-                { src: img3, alt: '', },
+                { src: project6, alt: '', },
             ],
             currentImage: 0,
             show: false,
@@ -191,9 +178,7 @@ export default {
 }
 
 
-.stop {
-    font-size: .9vw;
-}
+
 
 .navimage {
     display: flex;
@@ -232,27 +217,16 @@ h2 {
 
 
 
-a {
-    font-size: 1vw;
-    font-style: italic;
-}
+
 
 .left {
     width: 50%;
-    margin-top: -.5vw;
+    margin-top: -7vw;
 }
 
 .right {
     width: 50%;
     margin: 3.5vw 0 0 2vw;
-}
-
-
-.see {
-    position: absolute;
-    font-style: italic;
-    margin-top: calc(2.2vw - 2vh);
-    right: 0;
 }
 
 

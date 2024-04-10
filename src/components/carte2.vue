@@ -14,33 +14,33 @@
 
 
             <div class="left">
-                <h2>Automating at Nantes Hospital</h2>
+                <h2>Automatisation à l'Hôpital de Nantes</h2>
                 <p>
-                    During my internship at Nantes University Hospital.My mission was to automate the deployment of MS SQL
-                    databases and the virtual machines hosting these databases.
+                    Pendant mon stage aux CHU de Nantes. Ma mission était d'automatiser le déploiement
+                    des bases de données MS SQL
+                    et les machines virtuelles hébergeant ces bases de données.
                 </p>
                 <p>
-                    If you want to know more about this project, my internship report and the code are available on my
+                    Si vous voulez en savoir plus sur ce projet, mon rapport de stage et le code sont disponibles sur
+                    mon
                     github.
                 </p>
 
             </div>
 
             <div class="right">
-                <h3>Technologies:</h3>
-                <p>Powershell, ini files, MS SQL, powerCLI, VMware.
+                <h3>Technologies :</h3>
+                <p>Powershell, fichiers ini, MS SQL, powerCLI, VMware.
                 </p>
 
-                <h3>Completed:</h3>
+                <h3>Terminé :</h3>
                 <p>16/06/2023.</p>
 
-                <h3>Type:</h3>
-                <p>Internship.</p>
+                <h3>Type :</h3>
+                <p>Stage.</p>
 
-                <h3>Client:</h3>
-                <p>Eric Boisdon / CHU Nantes.</p>
-
-                <a class="see" href="https://github.com/Tizba44/rapportMCO" target="_blank">see code /internship report</a>
+                <a class="see" href="https://github.com/Tizba44/rapportMCO" target="_blank">voir le code / rapport de
+                    stage</a>
             </div>
 
         </div>
@@ -50,20 +50,20 @@
     </main>
 </template>
 
- 
-<script>
 
+
+<script>
 import { ref, computed } from 'vue';
 import anime from 'animejs';
 
-import projet1 from '/src/assets/img/projet2.png';
+import project2 from '/src/assets/img/projet2.png';
 
 
 export default {
     data() {
         return {
             images: [
-                { src: projet1, alt: '', },
+                { src: project2, alt: '', },
             ],
             currentImage: 0,
             show: false,
@@ -161,7 +161,7 @@ export default {
 
 
 
-  
+
 <style scoped>
 @media (max-width: 900px) {
 
@@ -362,4 +362,3 @@ span:nth-of-type(8) {
     --x: 88.88%
 }
 </style>
- 

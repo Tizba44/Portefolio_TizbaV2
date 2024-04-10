@@ -1,5 +1,4 @@
 <template>
-
     <nav id="nav">
         <div v-for="(link, index) in links" :key="index" :class="{ 'nav-link': true, 'active': isActive(link.url) }">
             <div class="gravityButton">
@@ -7,6 +6,7 @@
             </div>
         </div>
     </nav>
+
     <div class="gravityButton">
         <div class="buttonIcon">
 
@@ -32,6 +32,9 @@
         </tr>
     </table>
 
+    <!-- floue quand une carte est afficher -->
+    <div class="fond" v-if="showcarteX"></div>
+
     <!-- Ajout des flèches de navigation -->
     <p class="fleche1" v-if="showcarteX && prevCarteAvailable" @click="prevCarte">&#x279C</p>
     <p class="fleche2" v-if="showcarteX && nextCarteAvailable" @click="nextCarte">&#x279C</p>
@@ -44,6 +47,7 @@
     <div class="gravityButton" id="droite">
         <a href="mailto:bapt.audeon@gmail.com" class="buttonIcon">Contact</a>
     </div>
+
     <div>
         <div>{{ props.model }}</div>
         <div>{{ props.textureData }}</div>
@@ -57,7 +61,8 @@
 // ===================================================================================
 // IMPORT ===================================================================================
 // ===================================================================================
-import { onMounted, ref, computed, unref } from 'vue';
+import { onMounted, ref, computed, unref, onUnmounted } from 'vue';
+
 
 import * as THREE from 'three';
 
@@ -83,6 +88,9 @@ import frog from '../components/Frog.vue';
 import Carte1 from '../components/carte1.vue';
 import Carte2 from '../components/carte2.vue';
 import Carte3 from '../components/carte3.vue';
+import Carte4 from '../components/carte4.vue';
+import Carte5 from '../components/carte5.vue';
+import Carte6 from '../components/carte6.vue';
 
 // ===================================================================================
 // Carte ==================================================================================
@@ -91,6 +99,9 @@ import Carte3 from '../components/carte3.vue';
 const showcarteX = ref(false)
 
 const cartes = ref([
+    { component: Carte6, show: false },
+    { component: Carte5, show: false },
+    { component: Carte4, show: false },
     { component: Carte3, show: false },
     { component: Carte2, show: false },
     { component: Carte1, show: false },
@@ -169,8 +180,8 @@ const nextCarteAvailable = computed(() => {
 // ===================================================================================
 
 const links = ref([
-    { name: 'Projects', url: '/' },
-    { name: 'About', url: '/about' }
+    { name: 'Projets', url: '/' },
+    { name: 'A propos', url: '/about' }
 ])
 
 const route = useRoute()
@@ -222,6 +233,9 @@ const props = defineProps({
 
 onMounted(() => {
 
+    const track = document.getElementById("image-track");
+    track.dataset.percentage = 0;
+
     //COMPOSANT enfant:
     let model = unref(props.data.model);
     let texture = unref(props.data.textureData);
@@ -247,7 +261,7 @@ onMounted(() => {
 
 
     const tailleecran = 0.3 * planete.length;
-    const zoom = 50 * planete.length;
+    const zoom = 40 * planete.length;
     const decalage = -2 * planete.length;
 
 
@@ -325,7 +339,7 @@ onMounted(() => {
                 side: THREE.DoubleSide,
                 opacity: 0,
                 // Définissez la couleur émissive du matériau
-                emissive: 0xE300E7
+                emissive: 0xFF0000
             })
         );
 
@@ -470,14 +484,12 @@ onMounted(() => {
                         anime({
                             targets: spheres[i].rotation,
                             keyframes: [
-                                { x: 0, duration: 450, easing: 'linear' }
+                                { x: (Math.PI / 180) * -0, duration: 450, easing: 'linear' }
                             ]
                         });
                     }, delay);
                     delay += 500; // Augmenter le délai pour chaque objet
                 }
-
-
             }
         }
         else {
@@ -624,8 +636,7 @@ onMounted(() => {
         //  caroussel systeme ==================================================================================
         // ===================================================================================
 
-        const track = document.getElementById("image-track");
-        track.dataset.percentage = 0;
+
         const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
         const handleOnUp = () => {
             track.dataset.mouseDownAt = "0";
@@ -642,7 +653,7 @@ onMounted(() => {
             track.dataset.percentage = nextPercentage;
             track.animate(
                 { transform: `translate(${nextPercentage}%, -50%)`, easing: 'cubic-bezier(0.33, 1, 0.68, 1)' },
-                { duration: 1500, fill: "forwards" });
+                { duration: 500, fill: "forwards" });
         }
 
         window.onmousedown = e => handleOnDown(e);
@@ -660,12 +671,12 @@ onMounted(() => {
             track.dataset.prevPercentage = track.dataset.percentage;
             track.animate(
                 { transform: `translate(${nextPercentage}%, -50%)`, easing: 'cubic-bezier(0.33, 1, 0.68, 1)' },
-                { duration: 1500, fill: "forwards" }
+                { duration: 500, fill: "forwards" }
             );
         }
         // Listen for the "wheel" event
         window.addEventListener("wheel", (event) => {
-            const direction = event.deltaY > 0 ? 5 : -5;
+            const direction = event.deltaY > 0 ? 2 : -2;
             handleScroll(direction);
         });
 
@@ -675,16 +686,16 @@ onMounted(() => {
                 let direction = 0;
                 switch (event.key) {
                     case "ArrowUp":
-                        direction = -5;
+                        direction = -2;
                         break;
                     case "ArrowDown":
-                        direction = 5;
+                        direction = 2;
                         break;
                     case "ArrowLeft":
-                        direction = 5;
+                        direction = 2;
                         break;
                     case "ArrowRight":
-                        direction = -5;
+                        direction = -2;
                         break;
                     default:
                         return;
@@ -694,10 +705,105 @@ onMounted(() => {
 
         }
     }
-    // Listen for the "keydown" event
 
 });
 
+onUnmounted(() => {
+
+
+
+
+    window.onmousedown = null;
+    window.ontouchstart = null;
+    window.onmouseup = null;
+    window.ontouchend = null;
+    window.onmousemove = null;
+    window.ontouchmove = null;
+    window.removeEventListener("wheel", null);
+    document.removeEventListener("keydown", null);
+
+    window.removeEventListener("wheel", (event) => {
+        const direction = event.deltaY > 0 ? 5 : -5;
+        handleScroll(direction);
+    });
+
+    document.removeEventListener("keydown", function (event) {
+        let direction = 0;
+        switch (event.key) {
+            case "ArrowUp":
+                direction = -5;
+                break;
+            case "ArrowDown":
+                direction = 5;
+                break;
+            case "ArrowLeft":
+                direction = 5;
+                break;
+            case "ArrowRight":
+                direction = -5;
+                break;
+            default:
+                return;
+        }
+        handleScroll(direction);
+    });
+
+    window.removeEventListener("resize", () => {
+        size.width = window.innerWidth;
+        size.height = window.innerHeight;
+        camera.aspect = size.width / size.height;
+        camera.updateProjectionMatrix()
+        renderer.setSize(size.width, size.height);
+        camera.setFocalLength(zoom);
+    });
+
+
+    window.removeEventListener("resize", () => {
+        size.width = window.innerWidth;
+        size.height = window.innerHeight;
+        camera3.aspect = size.width / size.height;
+        camera3.updateProjectionMatrix()
+        renderer3.setSize(size.width, size.height);
+        camera3.setFocalLength(zoom);
+    });
+
+
+
+    document.querySelectorAll('.gravityButton').forEach(btn => {
+        btn.removeEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const h = rect.width / 2;
+
+            const x = e.clientX - rect.left - h;
+            const y = e.clientY - rect.top - h;
+
+            const r1 = Math.sqrt(x * x + y * y);
+            const r2 = (1 - (r1 / h)) * r1;
+
+            const angle = Math.atan2(y, x);
+            const tx = Math.round(Math.cos(angle) * r2 * 100) / 100;
+            const ty = Math.round(Math.sin(angle) * r2 * 100) / 100;
+
+            const op = (r2 / r1) + 0.25;
+
+            btn.style.setProperty('--tx', `${tx}px`);
+            btn.style.setProperty('--ty', `${ty}px`);
+
+        });
+
+        btn.removeEventListener('mouseleave', (e) => {
+            btn.style.setProperty('--tx', '0px');
+            btn.style.setProperty('--ty', '0px');
+        });
+
+    });
+
+    window.removeEventListener("resize", () => {
+        camera.updateProjectionMatrix()
+    });
+
+
+});
 </script>
 
 
@@ -733,8 +839,6 @@ onMounted(() => {
     }
 
 }
-
-
 
 .canvas {
     left: 0;
@@ -872,5 +976,17 @@ onMounted(() => {
     width: 60px;
     height: auto;
     opacity: 0;
+}
+
+
+/* fond floueter  */
+.fond {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1;
 }
 </style>

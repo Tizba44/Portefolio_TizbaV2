@@ -1,8 +1,14 @@
 {
 	"asset":{
-		"generator":"Khronos glTF Blender I/O v3.6.28",
+		"generator":"Khronos glTF Blender I/O v3.6.27",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_draco_mesh_compression"
+	],
+	"extensionsRequired":[
+		"KHR_draco_mesh_compression"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -70,20 +76,15 @@
 			],
 			"scale":[
 				2,
-				1.9999998807907104,
-				1.9999998807907104
-			],
-			"translation":[
-				0,
-				0.006211459636688232,
-				0
+				2.000000238418579,
+				2.000000238418579
 			]
 		}
 	],
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Metal.002",
+			"name":"Metal.001",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
 					0.8970929980278015,
@@ -96,7 +97,7 @@
 		},
 		{
 			"doubleSided":true,
-			"name":"Black.002",
+			"name":"Black.001",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
 					0.021979300305247307,
@@ -110,64 +111,93 @@
 		{
 			"doubleSided":true,
 			"emissiveFactor":[
-				0.3659846782684326,
-				0.012395553290843964,
-				0.37678641080856323
+				1,
+				0,
+				0
 			],
-			"name":"Material.001",
+			"name":"Red_Light.001",
 			"pbrMetallicRoughness":{}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Object_0.002",
+			"name":"Object_0.001",
 			"primitives":[
 				{
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1
 					},
+					"extensions":{
+						"KHR_draco_mesh_compression":{
+							"bufferView":0,
+							"attributes":{
+								"POSITION":0,
+								"NORMAL":1
+							}
+						}
+					},
 					"indices":2,
-					"material":0
+					"material":0,
+					"mode":4
 				}
 			]
 		},
 		{
-			"name":"Object_1.002",
+			"name":"Object_1.001",
 			"primitives":[
 				{
 					"attributes":{
 						"POSITION":3,
 						"NORMAL":4
 					},
+					"extensions":{
+						"KHR_draco_mesh_compression":{
+							"bufferView":1,
+							"attributes":{
+								"POSITION":0,
+								"NORMAL":1
+							}
+						}
+					},
 					"indices":5,
-					"material":1
+					"material":1,
+					"mode":4
 				}
 			]
 		},
 		{
-			"name":"Object_2.002",
+			"name":"Object_2.001",
 			"primitives":[
 				{
 					"attributes":{
 						"POSITION":6,
 						"NORMAL":7
 					},
+					"extensions":{
+						"KHR_draco_mesh_compression":{
+							"bufferView":2,
+							"attributes":{
+								"POSITION":0,
+								"NORMAL":1
+							}
+						}
+					},
 					"indices":8,
-					"material":2
+					"material":2,
+					"mode":4
 				}
 			]
 		}
 	],
 	"accessors":[
 		{
-			"bufferView":0,
 			"componentType":5126,
 			"count":2472,
 			"max":[
 				0.9819073677062988,
 				0.9819073677062988,
-				0.22557777166366577
+				0.22554486989974976
 			],
 			"min":[
 				-0.9819073677062988,
@@ -177,25 +207,22 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":1,
 			"componentType":5126,
 			"count":2472,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":2,
 			"componentType":5123,
 			"count":11904,
 			"type":"SCALAR"
 		},
 		{
-			"bufferView":3,
 			"componentType":5126,
 			"count":1017,
 			"max":[
+				0.9884788393974304,
 				0.9884787797927856,
-				0.9884787201881409,
-				0.1606740653514862
+				0.16070574522018433
 			],
 			"min":[
 				-0.9884787797927856,
@@ -205,25 +232,22 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":4,
 			"componentType":5126,
 			"count":1017,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":5,
 			"componentType":5123,
 			"count":4416,
 			"type":"SCALAR"
 		},
 		{
-			"bufferView":6,
 			"componentType":5126,
 			"count":385,
 			"max":[
-				0.35747742652893066,
-				0.3574775159358978,
-				0.2808804214000702
+				0.3574773371219635,
+				0.35747748613357544,
+				0.28089115023612976
 			],
 			"min":[
 				-0.35747742652893066,
@@ -233,13 +257,11 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":7,
 			"componentType":5126,
 			"count":385,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":8,
 			"componentType":5123,
 			"count":2112,
 			"type":"SCALAR"
@@ -248,63 +270,24 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":29664,
-			"byteOffset":0,
-			"target":34962
+			"byteLength":11373,
+			"byteOffset":0
 		},
 		{
 			"buffer":0,
-			"byteLength":29664,
-			"byteOffset":29664,
-			"target":34962
+			"byteLength":5059,
+			"byteOffset":11376
 		},
 		{
 			"buffer":0,
-			"byteLength":23808,
-			"byteOffset":59328,
-			"target":34963
-		},
-		{
-			"buffer":0,
-			"byteLength":12204,
-			"byteOffset":83136,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":12204,
-			"byteOffset":95340,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":8832,
-			"byteOffset":107544,
-			"target":34963
-		},
-		{
-			"buffer":0,
-			"byteLength":4620,
-			"byteOffset":116376,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":4620,
-			"byteOffset":120996,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":4224,
-			"byteOffset":125616,
-			"target":34963
+			"byteLength":2236,
+			"byteOffset":16436
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":129840,
-			"uri":"untitled.bin"
+			"byteLength":18672,
+			"uri":"scene.bin"
 		}
 	]
 }

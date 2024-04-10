@@ -1,10 +1,6 @@
 <template>
     <img v-if="transitions[currentFrog]" :src="transitions[currentFrog].src" class="frog" alt="frog">
 </template>
-  
-
-
-    
 
 
 <script setup>
@@ -113,13 +109,3 @@ onMounted(() => {
     transform-origin: center;
 }
 </style>
-
-
-
-
-
-
- 
-      
-
-      

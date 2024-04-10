@@ -14,37 +14,29 @@
 
 
             <div class="left">
-                <h2>Amalgames: un blog de mode</h2>
-                <p>
-                    Mon ami a perdu son emploi en tant qu'éditeur pour l'un des plus grands blogs français.
-                    (verygoodlord.com)
+                <h2>Galaxie Swiss Bourdin</h2>
+                <p>J'ai refondu le site de Galaxie Swiss Bourdin, une entreprise de nettoyage industriel. Pour cela j'ai
+                    utilisé Laravel en model view conroller.J'ai également utilisé Inertia.js pour la partie front-end
+                    en vue.js.
                 </p>
-                <p>
-                    Je lui ai proposé de lui crée un theme wordpress pour qu'il puisse continuer à utiliser les
-                    compétences qu'il a acquises.
-                </p>
-                <p>J'ai coder le theme wordpress en php from scratch, cela m'a permis de comprendre comment fonctionne
-                    wordpress
-                </p>
-                <p class="stop">(Nous avons arrêté, j'ai migré le blog vers mon portfolio.)
-                </p>
+                <p>J'ai réaliser cette application dans le cadre de l'exemen de mon BTS SIO, si vous voulez en savoir
+                    plus sur ce projet, le code sont disponibles sur
+                    mon
+                    github.</p>
             </div>
 
             <div class="right">
+                <h3>Technologies:</h3>
+                <p> MySQL, Laravel, Laravel Breeze, Anime.js , Inertia.js , Vue.js.
+                </p>
 
-                <h3>Technologies :</h3>
-                <p>WordPress, PHP, CSS, Vanilla JS, Yoast SEO, Figma.</p>
+                <h3>Completed:</h3>
+                <p>28/10/2023.</p>
 
-                <h3>Terminé :</h3>
-                <p>18/02/2023.</p>
-
-                <h3>Type :</h3>
-                <p>Blog.</p>
+                <h3>Type:</h3>
+                <p>Travaille Pratique.</p>
 
 
-
-                <a class="see" href="https://amalgames.baptisteaudeon.com/" target="_blank">voir le site web</a>
-                <a href="" target="_blank">voir le code source</a>
 
             </div>
 
@@ -56,27 +48,21 @@
 </template>
 
 
-
 <script>
 
 import { ref, computed } from 'vue';
 import anime from 'animejs';
 
 
-import project1 from '/src/assets/img/projet1.png';
+import project5 from '/src/assets/img/projet5.png';
 
-import img1 from '/src/assets/img/img1.png'
-import img2 from '/src/assets/img/img2.png'
-import img3 from '/src/assets/img/img3.png'
+
 
 export default {
     data() {
         return {
             images: [
-                { src: project1, alt: '', },
-                { src: img1, alt: '', },
-                { src: img2, alt: '', },
-                { src: img3, alt: '', },
+                { src: project5, alt: '', },
             ],
             currentImage: 0,
             show: false,
@@ -191,9 +177,7 @@ export default {
 }
 
 
-.stop {
-    font-size: .9vw;
-}
+
 
 .navimage {
     display: flex;
@@ -232,27 +216,16 @@ h2 {
 
 
 
-a {
-    font-size: 1vw;
-    font-style: italic;
-}
+
 
 .left {
     width: 50%;
-    margin-top: -.5vw;
+    margin-top: -7vw;
 }
 
 .right {
     width: 50%;
     margin: 3.5vw 0 0 2vw;
-}
-
-
-.see {
-    position: absolute;
-    font-style: italic;
-    margin-top: calc(2.2vw - 2vh);
-    right: 0;
 }
 
 

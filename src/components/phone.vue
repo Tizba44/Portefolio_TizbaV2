@@ -8,7 +8,7 @@
     <p class="date">2023</p>
   </div>
   <div class="txt">
-    <h2 class="l1"> Hi! I'm<span id="name"> Baptiste</span>,</h2>
+    <h2 class="l1"> Hi! I'm Baptiste,</h2>
     <h2 class="l2">a twenty-two y.o</h2>
     <h2 class="l3">French developer.
     </h2>
@@ -60,7 +60,7 @@ body {
 .date {
   color: #fff;
   align-self: flex-start;
-  font-family: 'Changeling Neo Stencil.otf';
+  font-family: 'font2.ttf';
   font-size: 1.5rem;
   padding-right: 3vw;
 }
@@ -84,7 +84,7 @@ body {
 span {
   color: #961a98;
   text-transform: uppercase;
-  font-family: 'Changeling Neo Inline.otf';
+  font-family: 'font2.ttf';
 }
 
 .txt {
@@ -209,7 +209,4 @@ onMounted(() => {
 
 })
 
-</script >
-
-
- 
+</script>
