@@ -261,7 +261,7 @@ onMounted(() => {
 
 
     const tailleecran = 0.3 * planete.length;
-    const zoom = 40 * planete.length;
+    const zoom = 45 * planete.length;
     const decalage = -2 * planete.length;
 
 

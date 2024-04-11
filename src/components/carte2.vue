@@ -14,16 +14,14 @@
 
 
             <div class="left">
-                <h2>Automatisation à l'Hôpital de Nantes</h2>
+                <h2>Automatisation aux CHU Nantes</h2>
                 <p>
-                    Pendant mon stage aux CHU de Nantes. Ma mission était d'automatiser le déploiement
+                    Pendant mon stage aux CHU de Nantes, ma mission était d'automatiser le déploiement
                     des bases de données MS SQL
                     et les machines virtuelles hébergeant ces bases de données.
                 </p>
-                <p>
-                    Si vous voulez en savoir plus sur ce projet, mon rapport de stage et le code sont disponibles sur
-                    mon
-                    github.
+                <p> Le but était de faciliter le travail des administrateurs systèmes et de réduire les erreurs
+                    humaines et ainsi d'augmenter la sécurité et faciliter la maintenance des bases de données.
                 </p>
 
             </div>
@@ -34,13 +32,22 @@
                 </p>
 
                 <h3>Terminé :</h3>
-                <p>16/06/2023.</p>
+                <p>21/06/2023.</p>
 
                 <h3>Type :</h3>
                 <p>Stage.</p>
 
-                <a class="see" href="https://github.com/Tizba44/rapportMCO" target="_blank">voir le code / rapport de
-                    stage</a>
+
+                <div class="see">
+                    <div>
+                        <a href="/src/assets/img/Rapport de stage CHU.pdf" target="_blank">Voir le Rapport de
+                            stage</a>
+                    </div>
+                    <div>
+                        <a href="https://github.com/Tizba44/rapportMCO" target="_blank">Voir le code source</a>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -224,7 +231,7 @@ a {
 
 .left {
     width: 50%;
-    margin-top: -6vw;
+    margin-top: -1.5vw;
 }
 
 .right {
@@ -235,9 +242,16 @@ a {
 
 .see {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     font-style: italic;
-    margin-top: calc(2.2vw - 2vh);
+    margin-top: calc(.2vw - 0vh);
     right: 0;
+    color: rgb(189, 184, 235);
+}
+
+.see div {
+    margin: 0 0 1vh 0;
 }
 
 

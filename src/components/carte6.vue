@@ -16,7 +16,8 @@
             <div class="left">
                 <h2>Automatiser la création d’agenda</h2>
                 <p>
-                    Lors de mon stage SUN radio j'ai réalisé un outil automatisant la génération d'agendas d'événements
+                    Lors de mon stage chez SUN radio j'ai réalisé un outil automatisant la génération d'agendas
+                    d'événements
                     locaux sur
                     leur site web. L'outil intègre les événements les plus pertinents, récupérés via des flux RSS/API.
                     Ces
@@ -31,20 +32,21 @@
                 </p>
 
                 <h3>Completed:</h3>
-                <p>28/10/2023.</p>
+                <p>23/02/2024.</p>
 
                 <h3>Type:</h3>
                 <p>Stage.</p>
 
-                <h3>Client :</h3>
-                <p>Projet personnel.</p>
 
+                <div class="see">
+                    <div>
+                        <a href="/src/assets/img/Rapport de stage SUN.pdf" target="_blank">Voir le Rapport de
+                            stage</a>
+                    </div>
+                </div>
             </div>
-
         </div>
-
         <span v-for="(blur, index) in blurs" :key="index" :style="{ '--blur': blur + 'px' }"></span>
-
     </main>
 </template>
 
@@ -59,11 +61,15 @@ import project6 from '/src/assets/img/projet6.png';
 
 
 
+
 export default {
     data() {
         return {
             images: [
                 { src: project6, alt: '', },
+
+
+
             ],
             currentImage: 0,
             show: false,
@@ -214,14 +220,22 @@ h2 {
     margin-bottom: 2vw;
 }
 
+.see {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    margin-top: calc(2.2vw - 2vh);
+    right: 0;
+    color: rgb(189, 184, 235);
+}
 
-
-
-
+.see div {
+    margin: 0 0 1vh 0;
+}
 
 .left {
     width: 50%;
-    margin-top: -7vw;
 }
 
 .right {

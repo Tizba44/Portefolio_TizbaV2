@@ -18,10 +18,8 @@
                 <p>J'ai codé et conçu le portfolio en utilisant Vue.js, Anime.js et Three.js. J'ai pris des éléments
                     liés à l'espace et à la science-fiction pour créer un univers unique.</p>
 
-                <p>Je m'y suis repris a plusieur fois ,j'ai dû supprimer
-                    les trois quarts de mon code, mais je suis assez satisfait du résultat final. J'espère que vous
-                    l'aimerez autant
-                    que moi.</p>
+                <p>Ce portfolio m'a permis de développer mes compétences en design et creative coding tout en apprenant
+                    un des frameworks les plus populaires du moment.</p>
             </div>
 
             <div class="right">
@@ -31,12 +29,17 @@
 
 
                 <h3>Terminé :</h3>
-                <p>28/10/2023.</p>
+                <p>05/10/2023.</p>
 
 
                 <h3>Type :</h3>
                 <p>Portfolio.</p>
 
+                <div class="see">
+                    <div>
+                        <a href="https://github.com/Tizba44/Portefolio_TizbaV2" target="_blank">Voir le code source</a>
+                    </div>
+                </div>
 
 
             </div>
@@ -195,7 +198,19 @@ export default {
     z-index: 20;
 }
 
+.see {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    margin-top: calc(2.2vw - 2vh);
+    right: 0;
+    color: rgb(189, 184, 235);
+}
 
+.see div {
+    margin: 0 0 1vh 0;
+}
 
 h3 {
     margin: 0;
@@ -214,14 +229,9 @@ h2 {
     margin-bottom: 2vw;
 }
 
-
-
-
-
-
 .left {
     width: 50%;
-    margin-top: -7vw;
+    margin-top: -2vw;
 }
 
 .right {

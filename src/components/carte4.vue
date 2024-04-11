@@ -16,12 +16,11 @@
             <div class="left">
                 <h2>GNote</h2>
 
-                <p>Ce projet est constitué d'une application qui enregistre des notes dans un JSON et d'une API
-                    REST qui permet de récupérer les informations et les insérer une base de données.</p>
-                <p>J'ai réaliser cette application dans le cadre de l'exemen de mon BTS SIO, si vous voulez en savoir
-                    plus sur ce projet, le code sont disponibles sur
-                    mon
-                    github.</p>
+                <p>J'ai codé une application avec JavaFX qui permet de rentrer les notes des élèves et les stocker dans
+                    un JSON. J'ai aussi créé une API REST avec Spring Data/Hibernate pour récupérer les notes des élèves
+                    et les insérer dans une base de données </p>
+
+                <p>J'ai réalisé cette application dans le cadre de l'exemen de mon BTS SIO.</p>
             </div>
 
             <div class="right">
@@ -30,10 +29,16 @@
                 </p>
 
                 <h3>Completed:</h3>
-                <p>28/10/2023.</p>
+                <p>20/12/2023.</p>
 
                 <h3>Type:</h3>
                 <p>Travaille Pratique.</p>
+
+                <div class="see">
+                    <div>
+                        <a href="https://github.com/Tizba44/Gnotetizba" target="_blank">Voir le code source</a>
+                    </div>
+                </div>
 
 
             </div>
@@ -53,7 +58,9 @@ import anime from 'animejs';
 
 import project4 from '/src/assets/img/projet4.png';
 
-
+import note1 from '/src/assets/img/note1.png';
+import note2 from '/src/assets/img/note2.png';
+import note3 from '/src/assets/img/note3.png';
 
 
 
@@ -62,6 +69,9 @@ export default {
         return {
             images: [
                 { src: project4, alt: '', },
+                { src: note1, alt: '', },
+                { src: note2, alt: '', },
+                { src: note3, alt: '', },
             ],
             currentImage: 0,
             show: false,
@@ -161,6 +171,21 @@ export default {
 
 
 <style scoped>
+.see {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    margin-top: calc(2.2vw - 2vh);
+    right: 0;
+    color: rgb(189, 184, 235);
+}
+
+.see div {
+    margin: 0 0 1vh 0;
+}
+
+
 @media (max-width: 900px) {
 
     /* faire disparaitre les minia  */
@@ -219,7 +244,7 @@ h2 {
 
 .left {
     width: 50%;
-    margin-top: -7vw;
+    margin-top: 0vw;
 }
 
 .right {

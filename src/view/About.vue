@@ -16,7 +16,7 @@
             </div>
             <div class="nav-link">
                 <a href="https://www.linkedin.com/in/baptiste-audeon-04b070287/" target="_blank"
-                    class="buttonIcon">LinkedIn</a>
+                    class="buttonIcon">Linkedin</a>
             </div>
 
         </div>
@@ -79,7 +79,7 @@
                 <p>
                     Je travaille avec Vue.js et j'utilise Anime.js pour l'animation et Three.js pour la 3D. J'ai
                     l'habitude d'utiliser
-                    WordPress. Mes projets personnels et mes études m'ont amené à utiliser
+                    WordPress. Mes projets personnels et mes études m'ont amenés à utiliser
                     une variété de
                     technologies, dont java, laravel, pythons ...
                 </p>
@@ -90,28 +90,41 @@
             <div class="ligne"></div>
             <div class="left2">
                 <div>
-                    <h3>documents BTS</h3>
+                    <h3>Documents</h3>
                     <div>
-                        <!-- insérer un pdf téléchargable ici de mes compétences -->
-                        <a href="/src/assets/img/baptiste AUDEON.xlsx" download>
-                            <p>Portefeuil de Compétences </p>
+                        <!-- insérer un pdf téléchargable ici de mon CV -->
+                        <a href="/src/assets/img/CV Baptiste AUDEON.pdf" target="_blank">
+                            <p>Attestation de Stage 1ère années</p>
+                        </a>
+                    </div>
+                    <div>
+                        <!-- insérer un pdf téléchargable ici de mon CV -->
+                        <a href="/src/assets/img/CV Baptiste AUDEON.pdf" target="_blank">
+                            <p>Attestation de Stage 2ème années</p>
                         </a>
                     </div>
 
                     <div>
+                        <!-- insérer un pdf téléchargable ici de mes compétences -->
+                        <a href="/src/assets/img/baptiste AUDEON.xlsx" target="_blank">
+                            <p>Portefeuil de Compétences </p>
+                        </a>
+                    </div>
+                    <div>
                         <!-- lien vers notion pour lire mes rapports de stage et compte rendu -->
-                        <a href="https://www.notion.so/Projet-1-1e4b3b3b3b3b4
+                        <a href="https://twitter.com/Tizba443585
 " target="_blank">
-                            <p>Rapport de stage</p>
+                            <p>Twitter</p>
                         </a>
                     </div>
 
                     <div>
                         <!-- insérer un pdf téléchargable ici de mon CV -->
-                        <a href="/src/assets/img/CV Baptiste AUDEON" download>
+                        <a href="/src/assets/img/CV Baptiste AUDEON.pdf" target="_blank">
                             <p>CV </p>
                         </a>
                     </div>
+
                 </div>
 
             </div>
@@ -678,7 +691,7 @@ onUnmounted(() => {
 
 .left2 p {
     color: #ffffff;
-    font-size: 3vw;
+    font-size: 2vw;
     margin: 0;
     z-index: 1;
     white-space: nowrap;
@@ -688,11 +701,9 @@ onUnmounted(() => {
 /* rajoute de l'espace entre  */
 .left2 div {
     /* majuscule */
-    text-transform: uppercase;
+
     margin: 2vh 0 0 0;
 }
-
-
 
 
 #image-track12 {
@@ -833,8 +844,6 @@ h2 {
     z-index: 2;
     bottom: 0;
 }
-
-
 
 .anime {
     position: fixed;

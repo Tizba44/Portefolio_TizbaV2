@@ -16,13 +16,11 @@
             <div class="left">
                 <h2>Galaxie Swiss Bourdin</h2>
                 <p>J'ai refondu le site de Galaxie Swiss Bourdin, une entreprise de nettoyage industriel. Pour cela j'ai
-                    utilisé Laravel en model view conroller.J'ai également utilisé Inertia.js pour la partie front-end
-                    en vue.js.
+                    utilisé Laravel en model view controller. J'ai également utilisé Inertia.js pour la partie
+                    controller et vue.js pour la partie view.
                 </p>
-                <p>J'ai réaliser cette application dans le cadre de l'exemen de mon BTS SIO, si vous voulez en savoir
-                    plus sur ce projet, le code sont disponibles sur
-                    mon
-                    github.</p>
+                <p>J'ai réalisé cette application dans le cadre de l'exemen de mon BTS SIO.
+                </p>
             </div>
 
             <div class="right">
@@ -31,11 +29,15 @@
                 </p>
 
                 <h3>Completed:</h3>
-                <p>28/10/2023.</p>
+                <p>01/04/2024.</p>
 
-                <h3>Type:</h3>
-                <p>Travaille Pratique.</p>
 
+
+                <div class="see">
+                    <div>
+                        <a href="https://github.com/Tizba44/GSBaptiste" target="_blank">Voir le code source</a>
+                    </div>
+                </div>
 
 
             </div>
@@ -56,13 +58,16 @@ import anime from 'animejs';
 
 import project5 from '/src/assets/img/projet5.png';
 
-
+import gsb1 from '/src/assets/img/gsb1.png';
+import gsb2 from '/src/assets/img/gsb2.png';
 
 export default {
     data() {
         return {
             images: [
                 { src: project5, alt: '', },
+                { src: gsb1, alt: '', },
+                { src: gsb2, alt: '', },
             ],
             currentImage: 0,
             show: false,
@@ -162,6 +167,21 @@ export default {
 
 
 <style scoped>
+.see {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    margin-top: calc(2.2vw - 2vh);
+    right: 0;
+    color: rgb(189, 184, 235);
+}
+
+.see div {
+    margin: 0 0 1vh 0;
+}
+
+
 @media (max-width: 900px) {
 
     /* faire disparaitre les minia  */
@@ -220,7 +240,6 @@ h2 {
 
 .left {
     width: 50%;
-    margin-top: -7vw;
 }
 
 .right {

@@ -16,16 +16,16 @@
             <div class="left">
                 <h2>Amalgames: un blog de mode</h2>
                 <p>
-                    Mon ami a perdu son emploi en tant qu'éditeur pour l'un des plus grands blogs français.
+                    Un ami a perdu son emploi de rédacteur auprès d'un grand blogueur français.
                     (verygoodlord.com)
                 </p>
                 <p>
-                    Je lui ai proposé de lui crée un theme wordpress pour qu'il puisse continuer à utiliser les
+                    Je lui ai proposé de créer un thème Wordpress pour qu'il puisse continuer à utiliser les
                     compétences qu'il a acquises.
                 </p>
-                <p>J'ai coder le theme wordpress en php from scratch, cela m'a permis de comprendre comment fonctionne
-                    wordpress
-                </p>
+                <p>J'ai codé le thème Wordpress en php from scratch, cela m'a permis d'en apprendre plus sur le
+                    fonctionnement de Wordpress et de m'améliorer en php.</p>
+
                 <p class="stop">(Nous avons arrêté, j'ai migré le blog vers mon portfolio.)
                 </p>
             </div>
@@ -36,15 +36,19 @@
                 <p>WordPress, PHP, CSS, Vanilla JS, Yoast SEO, Figma.</p>
 
                 <h3>Terminé :</h3>
-                <p>18/02/2023.</p>
+                <p>10/02/2023.</p>
 
                 <h3>Type :</h3>
                 <p>Blog.</p>
 
 
+                <div class="see">
+                    <div> <a href="https://amalgames.baptisteaudeon.com/" target="_blank">Voir le site web</a></div>
+                    <div>
+                        <a href="https://github.com/Tizba44/FR-Amal-V1" target="_blank">Voir le code source</a>
+                    </div>
+                </div>
 
-                <a class="see" href="https://amalgames.baptisteaudeon.com/" target="_blank">voir le site web</a>
-                <a href="" target="_blank">voir le code source</a>
 
             </div>
 
@@ -221,6 +225,7 @@ p {
     text-transform: none;
     font-size: 1.3vw;
     margin: 0 0 1vh 0;
+
 }
 
 h2 {
@@ -250,10 +255,18 @@ a {
 
 .see {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     font-style: italic;
-    margin-top: calc(2.2vw - 2vh);
+    margin-top: calc(.2vw - 0vh);
     right: 0;
+    color: rgb(189, 184, 235);
 }
+
+.see div {
+    margin: 0 0 1vh 0;
+}
+
 
 
 .container {

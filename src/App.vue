@@ -72,7 +72,7 @@ import frog8 from '/src/assets/img/frog8.svg';
 import frog9 from '/src/assets/img/frog9.svg';
 
 import image1 from '/src/assets/img/image1.jpg';
-import image2 from '/src/assets/img/image2.png';
+
 
 
 import project1 from '/src/assets/img/projet1.png';
@@ -92,7 +92,6 @@ const imagesToPreload = [
   frog8,
   frog9,
   image1,
-  image2,
   project1,
   project2,
   project3,
