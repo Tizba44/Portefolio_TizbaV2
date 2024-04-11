@@ -40,7 +40,7 @@
 
                 <div class="see">
                     <div>
-                        <a href="/src/assets/img/Rapport de stage SUN.pdf" target="_blank">Voir le Rapport de
+                        <a href="/Rapport de stage SUN.pdf" target="_blank">Voir le Rapport de
                             stage</a>
                     </div>
                 </div>

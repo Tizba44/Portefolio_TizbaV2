@@ -86,27 +86,26 @@
             </div>
         </div>
         <div id="quatre">
-
             <div class="ligne"></div>
             <div class="left2">
                 <div>
                     <h3>Documents</h3>
                     <div>
                         <!-- insérer un pdf téléchargable ici de mon CV -->
-                        <a href="/src/assets/img/CV Baptiste AUDEON.pdf" target="_blank">
-                            <p>Attestation de Stage 1ère années</p>
+                        <a href="/1ère année.pdf" target="_blank">
+                            <p>Attestation de Stage 1ère année</p>
                         </a>
                     </div>
                     <div>
                         <!-- insérer un pdf téléchargable ici de mon CV -->
-                        <a href="/src/assets/img/CV Baptiste AUDEON.pdf" target="_blank">
-                            <p>Attestation de Stage 2ème années</p>
+                        <a href="/2ème année.pdf" target="_blank">
+                            <p>Attestation de Stage 2ème année</p>
                         </a>
                     </div>
 
                     <div>
                         <!-- insérer un pdf téléchargable ici de mes compétences -->
-                        <a href="/src/assets/img/baptiste AUDEON.xlsx" target="_blank">
+                        <a href="/baptiste AUDEON.xlsx" target="_blank">
                             <p>Portefeuil de Compétences </p>
                         </a>
                     </div>
@@ -120,7 +119,7 @@
 
                     <div>
                         <!-- insérer un pdf téléchargable ici de mon CV -->
-                        <a href="/src/assets/img/CV Baptiste AUDEON.pdf" target="_blank">
+                        <a href="/CV Baptiste AUDEON.pdf" target="_blank">
                             <p>CV </p>
                         </a>
                     </div>
@@ -328,7 +327,7 @@ onMounted(() => {
 
     createAnimation('.anime', {
         delay: 0,
-        width: '70%',
+        width: '60%',
         right: 0,
         duration: 1000
     });
