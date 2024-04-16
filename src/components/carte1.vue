@@ -41,7 +41,6 @@
                 <h3>Type :</h3>
                 <p>Blog.</p>
 
-
                 <div class="see">
                     <div> <a href="https://amalgames.baptisteaudeon.com/" target="_blank">Voir le site web</a></div>
                     <div>
@@ -218,7 +217,7 @@ export default {
 
 h3 {
     margin: 0;
-    font-size: 1.5vw;
+    font-size: 1.4vw;
 }
 
 p {

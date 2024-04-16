@@ -28,7 +28,7 @@
                 <p> Figma, photoshop, Javafx , MySQL, Spring Data/Hibernate.
                 </p>
 
-                <h3>Completed:</h3>
+                <h3>Terminé :</h3>
                 <p>20/12/2023.</p>
 
                 <h3>Type:</h3>
@@ -219,10 +219,9 @@ export default {
 }
 
 
-
 h3 {
     margin: 0;
-    font-size: 1.5vw;
+    font-size: 1.4vw;
 }
 
 p {

@@ -214,7 +214,7 @@ export default {
 
 h3 {
     margin: 0;
-    font-size: 1.5vw;
+    font-size: 1.4vw;
 }
 
 p {

@@ -28,7 +28,7 @@
                 <p> MySQL, Laravel, Laravel Breeze, Anime.js , Inertia.js , Vue.js.
                 </p>
 
-                <h3>Completed:</h3>
+                <h3>Terminé :</h3>
                 <p>01/04/2024.</p>
 
 
@@ -215,10 +215,9 @@ export default {
 }
 
 
-
 h3 {
     margin: 0;
-    font-size: 1.5vw;
+    font-size: 1.4vw;
 }
 
 p {
