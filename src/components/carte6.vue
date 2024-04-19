@@ -37,8 +37,6 @@
                 <h3>Type:</h3>
                 <p>Stage.</p>
 
-                <h3>Client:</h3>
-
 
                 <div class="see">
                     <div>
