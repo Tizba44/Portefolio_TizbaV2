@@ -84,50 +84,9 @@
                     technologies, dont java, laravel, pythons ...
                 </p>
             </div>
-        </div>
-        <div id="quatre">
             <div class="ligne"></div>
-            <div class="left2">
-                <div>
-                    <h3>Documents</h3>
-                    <div>
-                        <!-- insérer un pdf téléchargable ici de mon CV -->
-                        <a href="/1ère année.pdf" target="_blank">
-                            <p>Attestation de Stage 1ère année</p>
-                        </a>
-                    </div>
-                    <div>
-                        <!-- insérer un pdf téléchargable ici de mon CV -->
-                        <a href="/2ème année.pdf" target="_blank">
-                            <p>Attestation de Stage 2ème année</p>
-                        </a>
-                    </div>
-
-                    <div>
-                        <!-- insérer un pdf téléchargable ici de mes compétences -->
-                        <a href="/baptiste AUDEON.xlsx" target="_blank">
-                            <p>Portefeuil de Compétences </p>
-                        </a>
-                    </div>
-                    <div>
-                        <!-- lien vers notion pour lire mes rapports de stage et compte rendu -->
-                        <a href="https://twitter.com/Tizba443585
-" target="_blank">
-                            <p>Twitter</p>
-                        </a>
-                    </div>
-
-                    <div>
-                        <!-- insérer un pdf téléchargable ici de mon CV -->
-                        <a href="/CV Baptiste AUDEON.pdf" target="_blank">
-                            <p>CV </p>
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
         </div>
+
 
     </div>
 </template>
@@ -452,7 +411,7 @@ onMounted(() => {
 
             const percentage = (mouseDelta / maxDelta) * -100,
                 nextPercentage2Unconstrained2 = parseFloat(track1.dataset.prevPercentage) + percentage * .6,
-                nextPercentage2 = Math.max(Math.min(nextPercentage2Unconstrained2, 0), -66.66);
+                nextPercentage2 = Math.max(Math.min(nextPercentage2Unconstrained2, 0), -50);
 
             function animateElements(elements, properties, options) {
                 for (const element of elements) {
@@ -474,7 +433,7 @@ onMounted(() => {
             );
 
             animateElements(track1.getElementsByClassName("slide"),
-                { backgroundPosition: `${100 + nextPercentage2 * 4.5}% center` },
+                { backgroundPosition: `${100 + nextPercentage2 * 3}% center` },
                 options
             );
 
@@ -505,7 +464,7 @@ onMounted(() => {
             const nextPercentage2Unconstrained2 = direction2 + parseFloat(track1.dataset.percentage);
 
 
-            const nextPercentage2 = Math.max(Math.min(nextPercentage2Unconstrained2, 0), -66.66);
+            const nextPercentage2 = Math.max(Math.min(nextPercentage2Unconstrained2, 0), -50);
 
             function animateElements(elements, properties, options) {
                 for (const element of elements) {
@@ -524,7 +483,7 @@ onMounted(() => {
             );
 
             animateElements(track1.getElementsByClassName("slide"),
-                { backgroundPosition: `${100 + nextPercentage2 * 4.5}% center` },
+                { backgroundPosition: `${100 + nextPercentage2 * 3}% center` },
                 options
             );
 
@@ -678,31 +637,6 @@ onUnmounted(() => {
     white-space: nowrap;
 }
 
-/* rajoute de l'espace entre  */
-.left2 {
-    width: 100vw;
-    font-family: 'font2.ttf';
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.left2 p {
-    color: #ffffff;
-    font-size: 2vw;
-    margin: 0;
-    z-index: 1;
-    white-space: nowrap;
-
-}
-
-/* rajoute de l'espace entre  */
-.left2 div {
-    /* majuscule */
-
-    margin: 2vh 0 0 0;
-}
 
 
 #image-track12 {
@@ -718,6 +652,9 @@ onUnmounted(() => {
     width: 12px;
     height: 100vh;
     background-color: #961a98;
+    position: fixed;
+    right: 0;
+    z-index: 100;
 }
 
 

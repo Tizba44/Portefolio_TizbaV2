@@ -1,0 +1,51 @@
+{
+    "contact": "Contact",
+    "linkedin": "Linkedin",
+    "about_me": {
+        "line1": "Hi, I'm Baptiste,",
+        "line2": "a twenty-two y.o.",
+        "line3": "French developer."
+    },
+    "journey": {
+        "J": "J",
+        "o": "o",
+        "u": "u",
+        "r": "r",
+        "n": "n",
+        "e": "e",
+        "y": "y",
+        "description": "Currently in my second year of computer science studies, I am particularly interested in front-end development, especially in the areas of motion and interaction."
+    },
+    "technologies": {
+        "T": "T",
+        "o": "o",
+        "o2": "o",
+        "l": "l",
+        "s": "s"
+    },
+    "description": {
+        "description": "I've always loved creating things, from videos to cartoons. I like to use my imagination to give flesh to my ideas. This is just the beginning let's go further and create something together."
+    },
+    "creativity": {
+        "C": "C",
+        "r": "r",
+        "e": "e",
+        "a": "a",
+        "t": "t",
+        "i": "i",
+        "v": "v",
+        "i2": "i",
+        "t2": "t",
+        "y": "y",
+        "description": "I've always loved creating things, from videos to cartoons. I like to use my imagination to give flesh to my ideas. This is just the beginning let's go further and create something together."
+    },
+    "skills": {
+        "vuejs": "Vue.js",
+        "animejs": "Anime.js",
+        "threejs": "Three.js",
+        "wordpress": "WordPress",
+        "java": "Java",
+        "laravel": "Laravel",
+        "python": "Python"
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "contact": "Contact",
+    "linkedin": "Linkedin",
+    "about_me": {
+        "line1": "Je suis Baptiste,",
+        "line2": "un developpeur",
+        "line3": "de vingt-deux ans."
+    },
+    "journey": {
+        "p": "P",
+        "a": "a",
+        "r": "r",
+        "c": "c",
+        "o": "o",
+        "u": "u",
+        "r2": "r",
+        "description": "Actuellement en deuxième année d'études en informatique, je m'intéresse particulièrement au développement front-end, surtout dans les domaines du motion et de l'interaction."
+    },
+    "technologies": {
+        "o": "O",
+        "u": "u",
+        "t": "t",
+        "i": "i",
+        "l": "l",
+        "s": "s"
+    },
+    "description": {
+        "description": "J'ai toujours aimé créer des choses, des vidéos aux dessins animés. J'aime utiliser mon imagination pour donner vie à mes idées. Peut-être que l'on aura l'occasion de créer quelque chose ensemble."
+    },
+    "creativity": {
+        "c": "C",
+        "r": "r",
+        "e": "e",
+        "a": "a",
+        "t": "t",
+        "i": "i",
+        "v": "v",
+        "i2": "i",
+        "t2": "t",
+        "y": "y",
+        "description": "J'ai toujours aimé créer des choses, des vidéos aux dessins animés. J'aime utiliser mon imagination pour donner vie à mes idées. Peut-être que l'on aura l'occasion de créer quelque chose ensemble."
+    },
+    "skills": {
+        "vuejs": "Vue.js",
+        "animejs": "Anime.js",
+        "threejs": "Three.js",
+        "wordpress": "WordPress",
+        "java": "Java",
+        "laravel": "Laravel",
+        "python": "Python"
+    }
+}
