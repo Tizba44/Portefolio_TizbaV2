@@ -81,6 +81,7 @@ import project3 from '/src/assets/img/projet3.png';
 import project4 from '/src/assets/img/projet4.png';
 import project5 from '/src/assets/img/projet5.png';
 import project6 from '/src/assets/img/projet6.png';
+import Phone from './components/Phone.vue';
 
 const imagesToPreload = [
   frog1,
@@ -123,7 +124,7 @@ const textureData = ref(null);
 onMounted(async () => {
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // L'utilisateur est sur un téléphone
-    const ComponentPhone = markRaw((await import('./components/phone.vue')).default)
+    const ComponentPhone = markRaw((await import(Phone)).default)
     currentComponent.value = ComponentPhone
     Loadingphone.value = false;
 

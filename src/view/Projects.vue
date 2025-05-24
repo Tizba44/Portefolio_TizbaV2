@@ -85,12 +85,12 @@ import project5 from '/src/assets/img/projet5.png';
 import project6 from '/src/assets/img/projet6.png';
 
 import frog from '../components/Frog.vue';
-import Carte1 from '../components/carte1.vue';
-import Carte2 from '../components/carte2.vue';
-import Carte3 from '../components/carte3.vue';
-import Carte4 from '../components/carte4.vue';
-import Carte5 from '../components/carte5.vue';
-import Carte6 from '../components/carte6.vue';
+import Carte1 from '../components/Carte1.vue';
+import Carte2 from '../components/Carte2.vue';
+import Carte3 from '../components/Carte3.vue';
+import Carte4 from '../components/Carte4.vue';
+import Carte5 from '../components/Carte5.vue';
+import Carte6 from '../components/Carte6.vue';
 
 // ===================================================================================
 // Carte ==================================================================================
